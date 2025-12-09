@@ -1,0 +1,73 @@
+// Firebase imports
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword } from "firebase/auth";
+import { getFirestore, doc, setDoc } from "firebase/firestore";
+
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyA1h3IIRC9la-kXyYnVEfwxzzoyBIL70Js",
+  authDomain: "my-website-a0545.firebaseapp.com",
+  projectId: "my-website-a0545",
+  storageBucket: "my-website-a0545.firebasestorage.app",
+  messagingSenderId: "103602694974",
+  appId: "1:103602694974:web:12f890844e6ad6a513da6f",
+  measurementId: "G-CL6V2T77JL"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Registration function
+async function register() {
+  const name = document.getElementById('name').value;
+  const birthdate = document.getElementById('birthdate').value;
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    // Send verification email
+    await sendEmailVerification(user);
+
+    // Save user data
+    await setDoc(doc(db, "users", user.uid), {
+      name: name,
+      birthdate: birthdate,
+      email: email
+    });
+
+    alert("Verification email sent! Check your inbox.");
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+// Login function
+async function login() {
+  const email = document.getElementById('login-email').value;
+  const password = document.getElementById('login-password').value;
+
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    if (!user.emailVerified) {
+      alert("Please verify your email first!");
+      return;
+    }
+
+    alert(`Welcome, ${user.email}! You are logged in.`);
+    // Redirect to dashboard or profile page here
+  } catch (error) {
+    alert(error.message);
+  }
+}
+
+// Export functions if using module bundler
+export { register, login };
