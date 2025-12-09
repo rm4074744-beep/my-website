@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Social Network</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <h1>Welcome to My Social Network</h1>
+
+  <div id="register">
+    <h2>Register</h2>
+    <input type="text" id="name" placeholder="Your Name"><br>
+    <input type="date" id="birthdate"><br>
+    <input type="email" id="email" placeholder="Email"><br>
+    <input type="password" id="password" placeholder="Password"><br>
+    <button onclick="register()">Register</button>
+  </div>
+
+  <div id="verify" style="display:none;">
+    <h2>Enter Verification Code</h2>
+    <input type="text" id="otp" placeholder="OTP"><br>
+    <button onclick="verifyCode()">Verify</button>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
