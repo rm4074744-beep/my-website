@@ -1,1 +1,239 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ABM Garments & Golden Fashion</title>
+
+<!-- Poppins Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#ffffff;
+}
+
+/* Header */
+
+.header{
+    width:100%;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 25px;
+    background:#fff;
+    border-bottom:1px solid #f2f2f2;
+}
+
+.menu-icon .material-icons{
+    font-size:40px;
+    color:#111;
+    cursor:pointer;
+}
+
+.logo{
+    text-align:center;
+}
+
+.logo h1{
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #111;
+    line-height: 1;
+}
+
+.logo p{
+    font-size: 7px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #a78961;
+    margin-top: 2px;
+    line-height: 1.2;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.header-actions .material-icons{
+    font-size:38px;
+    color:#111;
+    cursor:pointer;
+}
+
+.cart-icon{
+    position:relative;
+}
+
+.cart-badge{
+    position:absolute;
+    top:-5px;
+    right:-8px;
+    width:18px;
+    height:18px;
+    background:#000;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+    font-weight:600;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .header{
+        height:50px;
+        padding:0 15px;
+    }
+
+    .logo h1{
+        font-size: 30px;
+      position:right
+    }
+
+    .logo p{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+
+    .menu-icon .material-icons,
+    .header-actions .material-icons{
+        font-size:34px;
+    }
+  .bottom-nav{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: #fff;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+
+.bottom-nav a{
+    text-decoration: none;
+    color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.bottom-nav .material-icons{
+    font-size: 24px;
+}
+
+.bottom-nav span:last-child{
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.bottom-nav a:hover,
+.bottom-nav a.active{
+    color: #a78961;
+}
+  
+
+</style>
+</head>
+
+<body>
+
+<header class="header">
+
+    <!-- Menu -->
+    <div class="menu-icon">
+        <span class="material-icons">menu</span>
+    </div>
+
+    <!-- Logo -->
+<div class="logo">
+    <h1>ABM</h1>
+    <p>GARMENTS & GOLDEN FASHION</p>
+</div>
+
+    <!-- Right Icons -->
+    <span class="material-icons">favorite_border</span>
+<span class="material-icons">person_outline</span>
+
+    </div>
+  <div class="bottom-nav">
+
+    <a href="#" class="active">
+        <span class="material-icons">home</span>
+        <span>Home</span>
+    </a>
+
+    <a href="#">
+        <span class="material-icons">shopping_bag</span>
+        <span>Shop</span>
+    </a>
+
+    <a href="#">
+        <span class="material-icons">style</span>
+        <span>Collections</span>
+    </a>
+
+    <a href="#">
+        <span class="material-icons">person_outline</span>
+        <span>Account</span>
+    </a>
+
+  </div>
+
+</header>
+  <script>
+  function openAccount() {
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("accountPage").style.display = "blo<";
+}
+
+function goHome() {
+    document.getElementById("accountPage").style.display = "none";
+    document.getElementById("homePage").style.display = "block";
+}
+    const navItems = document.querySelectorAll('.bottom-nav a');
+
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+
+        navItems.forEach(nav => {
+            nav.classList.remove('active');
+        });
+
+        item.classList.add('active');
+
+    });
+});
+    </script>
+  
+
+</body>
+</html>
