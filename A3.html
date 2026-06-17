@@ -1,0 +1,487 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>ABM Garments & Golden Fashion</title>
+
+<!-- Poppins Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#ffffff;
+}
+
+/* Header */
+
+.header{
+    width:100%;
+    height:50px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:10px;
+    background:#fff;
+    border-bottom:1px solid #f2f2f2;
+    position: fixed;
+    z-index: 99999;
+    transition-behavior: none;
+}
+
+.menu-icon .material-icons{
+    font-size:40px;
+    color:#111;
+    cursor:pointer;
+}
+
+.logo{
+    text-align:center;
+}
+
+.logo h1{
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #111;
+    line-height: 1;
+}
+
+.logo p{
+    font-size: 7px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    color: #a78961;
+    margin-top: 2px;
+    line-height: 1.2;
+}
+
+.header-actions{
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
+
+.header-actions .material-icons{
+    font-size:38px;
+    color:#111;
+    cursor:pointer;
+}
+
+.cart-icon{
+    position:relative;
+}
+
+.cart-badge{
+    position:absolute;
+    top:-5px;
+    right:-8px;
+    width:18px;
+    height:18px;
+    background:#000;
+    color:#fff;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:10px;
+    font-weight:600;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    .header{
+        height:50px;
+        padding:0 15px;
+    }
+
+    .logo h1{
+        font-size: 30px;
+      position:right
+    }
+
+    .logo p{
+        font-size:8px;
+        letter-spacing:2px;
+    }
+
+    .menu-icon .material-icons,
+    .header-actions .material-icons{
+        font-size:34px;
+    }
+  .bottom-nav{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 65px;
+    background: #fff;
+    border-top: 1px solid #eaeaea;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+}
+
+.bottom-nav a{
+    text-decoration: none;
+    color: #111;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1;
+}
+
+.bottom-nav .material-icons{
+    font-size: 24px;
+}
+
+.bottom-nav span:last-child{
+    font-size: 11px;
+    font-weight: 500;
+}
+
+.bottom-nav a:hover,
+.bottom-nav a.active{
+    color: #a78961;
+}
+.side-menu a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px 20px;
+    text-decoration:none;
+    color:#222;
+    border-bottom:1px solid #eee;
+    font-size:16px;
+}
+
+.side-menu{
+    position: fixed;
+    top: 0;
+    left: -280px;
+    width: 280px;
+    height: 100vh;
+    background: #fff;
+    transition: 0.3s ease;
+    z-index: 9999;
+    overflow-x: hidden;
+}
+
+.side-menu.active{
+    left: 0;
+}
+
+.menu-header{
+    padding:20px;
+    border-bottom:1px solid #eee;
+    text-align:center;
+}
+
+.menu-header h2{
+    margin:0;
+    font-size:28px;
+    letter-spacing:2px;
+}
+.menu-btn{
+    width:45px;
+    height:45px;
+    border:none;
+    background:transparent;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    cursor:pointer;
+}
+
+.menu-btn .material-icons{
+    font-size:32px;
+    color:#C9A227;
+}
+.badge{
+    margin-left:auto;
+    padding:3px 8px;
+    border-radius:20px;
+    font-size:10px;
+    font-weight:600;
+}
+
+.badge.new{
+    background:#4CAF50;
+    color:#fff;
+}
+
+.badge.hot{
+    background:#ff5722;
+    color:#fff;
+}
+/* About Page */
+#aboutPage{
+    display:none;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#fff;
+    z-index:200;
+    overflow-y:auto;
+}
+
+/* Header */
+#aboutPage .page-header{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:15px;
+    background:#2196f3;
+    color:#fff;
+    position:sticky;
+    top:0;
+}
+
+#aboutPage .back-btn{
+    background:none;
+    border:none;
+    color:#fff;
+    cursor:pointer;
+}
+
+#aboutPage .back-btn .material-icons{
+    font-size:28px;
+}
+
+/* Content */
+#aboutPage .content{
+    padding:20px;
+}
+
+#aboutPage h2{
+    margin:0;
+    font-size:22px;
+}
+
+#aboutPage p{
+    line-height:1.7;
+    color:#555;
+    font-size:15px;
+}
+</style>
+</head>
+
+<body>
+  <header id="mainHeader">
+
+  
+  <div class="bottom-nav">
+
+    <a href="javascript:void(0)" id="homeBtn" class="active" onclick="openHome()">
+    <span class="material-icons">home</span>
+    <span>Home</span>
+</a>
+
+    <a href="#">
+        <span class="material-icons">shopping_bag</span>
+        <span>Shop</span>
+    </a>
+
+    <a href="#">
+        <span class="material-icons">style</span>
+        <span>Collections</span>
+    </a>
+
+    <a href="#">
+        <span class="material-icons">person_outline</span>
+        <span>Account</span>
+    </a>
+
+  </div>
+</header>
+<div id="sideMenu" class="side-menu">
+
+    <div class="menu-header">
+        <h2>ABM</h2>
+        <span class="close-btn" onclick="toggleMenu()">✕</span>
+    </div>
+
+    <a href="#"><span class="material-icons">category</span> Categories</a>
+
+    <a href="#"><span class="material-icons">new_releases</span> New Arrivals
+    <span class ="berged new">NEW</span>
+
+    <a href="#"><span class="material-icons">local_offer</span> Offers</a>
+
+    <a href="#"><span class="material-icons">collections</span> Collections
+     <span class="badge new">NEW</span>
+</a>
+
+    <a href="#"><span class="material-icons">favorite_border</span> Wishlist</a>
+
+    <a href="#"><span class="material-icons">shopping_bag</span> My Orders</a>
+
+    <a href="#"><span class="material-icons">local_shipping</span> Track Order
+    <span class="badge hot">HOT</span>
+</a>
+
+    <a href="#"><span class="material-icons">language</span> Language</a>
+
+    <a href="#"><span class="material-icons">contact_support</span> Contact Us</a>
+
+    <a href="javascript:void(0)" onclick="openAbout()">
+    <span class="material-icons">info</span> About Us
+</a>
+
+    <a href="#"><span class="material-icons">help_outline</span> Help Center</a>
+
+    <a href="#"><span class="material-icons">logout</span> Logout</a>
+
+</div>
+<div id="aboutPage">
+
+    <div class="page-header">
+        <button class="back-btn" onclick="closeAbout()">
+            <span class="material-icons">arrow_back</span>
+        </button>
+
+        <h1>About Us</h1>
+    </div>
+
+    <div class="about-content">
+
+        <h2>🎯 Our Mission</h2>
+        <p>
+            At ABM Garments & Golden Fashion, our mission is to deliver premium-quality fashion products with exceptional value, reliability, and customer satisfaction.
+        </p>
+
+        <h2>🌟 Our Vision</h2>
+        <p>
+            Our vision is to become a trusted global fashion destination recognized for innovation, quality, and customer experience.
+        </p>
+
+        <h2>💎 Why Choose Us</h2>
+        <ul>
+            <li>Premium Quality Products</li>
+            <li>Competitive & Affordable Pricing</li>
+            <li>Secure Shopping Experience</li>
+            <li>Customer-Centric Support Team</li>
+            <li>Fast & Reliable Order Processing</li>
+            <li>Carefully Curated Fashion Collections</li>
+        </ul>
+
+    </div>
+
+</div>
+<div id="homePage">
+  
+<header class="header">
+
+    <!-- Menu -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- Menu Button -->
+<button class="menu-btn" onclick="toggleMenu()">
+    <span class="material-icons">density_medium</span>
+</button>
+
+
+
+    <!-- Logo -->
+<div class="logo">
+    <h1>ABM</h1>
+    <p>GARMENTS & GOLDEN FASHION</p>
+</div>
+
+
+    <!-- Right Icons -->
+    <span class="material-icons">favorite_border</span>
+<span class="material-icons">person_outline</span>
+
+    </div>
+  
+  
+    
+</div>
+
+
+
+
+
+  <script>
+  function openAccount() {
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("accountPage").style.display = "blo<";
+}
+
+function goHome() {
+    document.getElementById("accountPage").style.display = "none";
+    document.getElementById("homePage").style.display = "block";
+}
+    const navItems = document.querySelectorAll('.bottom-nav a');
+
+navItems.forEach(item => {
+    item.addEventListener('click', () => {
+
+        navItems.forEach(nav => {
+            nav.classList.remove('active');
+        });
+
+        item.classList.add('active');
+
+    });
+});
+// -- open menu logic --//
+function toggleMenu() {
+    const menu = document.getElementById("sideMenu");
+    menu.classList.toggle("active");
+}
+
+// মেনুর বাইরে ক্লিক করলে বন্ধ হবে
+document.addEventListener("click", function(event) {
+    const menu = document.getElementById("sideMenu");
+    const menuBtn = document.querySelector(".menu-btn");
+
+    if (
+        menu.classList.contains("active") &&
+        !menu.contains(event.target) &&
+        !menuBtn.contains(event.target)
+    ) {
+        menu.classList.remove("active");
+    }
+});
+
+function openAbout() {
+  document.getElementById("sideMenu").classList.remove("active");
+document.getElementById("sideMenu").style.left = "-280px";
+
+    document.getElementById("homePage").style.display = "none";
+    document.getElementById("mainHeader").style.display = "none";
+    document.getElementById("aboutPage").style.display = "block";
+}
+
+function closeAbout() {
+    document.getElementById("aboutPage").style.display = "none";
+    document.getElementById("homePage").style.display = "block";
+    document.getElementById("mainHeader").style.display = "flex";
+}
+    </script>
+  
+
+  </body>
+  
