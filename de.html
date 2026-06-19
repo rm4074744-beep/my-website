@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>My Swiper Slider</title>
+
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+  <style>
+    body{
+      margin:0;
+      padding:20px;
+      background:#f5f5f5;
+    }
+
+    .swiper{
+      width:80%;
+      max-width:100%;
+      .swiper-slide{
+    aspect-ratio: 1.85 / 1;
+    border-radius:20px;
+    overflow:hidden;
+      }
+      
+
+    .swiper-slide img{
+      width:80%;
+      height:100%;
+      object-fit: cover;
+      display:block;
+    }
+  </style>
+</head>
+<body>
+
+<div class="swiper mySwiper">
+
+  <div class="swiper-wrapper">
+
+    <div class="swiper-slide">
+      <img src="IMG_20260619_015040.png" alt="">
+    </div>
+
+    <div class="swiper-slide">
+      <img src="IMG_20260619_025429.jpg" alt="">
+    </div>
+
+    <div class="swiper-slide">
+      <img src="IMG_20260619_025649.png" alt="">
+    </div>
+
+    <div class="swiper-slide">
+      <img src="IMG_20260619_030210.jpg" alt="">
+    </div>
+
+    <div class="swiper-slide">
+      <img src="IMG_20260619_030907.jpg" alt="">
+    </div>
+
+  </div>
+
+  <div class="swiper-pagination"></div>
+
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+const swiper = new Swiper(".mySwiper", {
+
+  loop:true,
+
+  autoplay:{
+    delay:3000,
+    disableOnInteraction:false,
+  },
+
+  pagination:{
+    el:".swiper-pagination",
+    clickable:true,
+  },
+
+  navigation:{
+    nextEl:".swiper-button-next",
+    prevEl:".swiper-button-prev",
+  }
+
+});
+</script>
+
+</body>
+</html>
